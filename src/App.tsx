@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import BusinessDetails from './pages/BusinessDetails';
+import UserRegister from './pages/UserRegister';
 import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/businesses" element={<AllBusinesses />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/register-user" element={<UserRegister />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/business/:id" element={<BusinessDetails />} />
