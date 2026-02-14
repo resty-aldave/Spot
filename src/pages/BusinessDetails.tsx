@@ -110,10 +110,10 @@ const BusinessDetails = () => {
                                 <p className="text-sm text-gray-400 mt-2">Updated recently</p>
                             </div>
 
-                            <button className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4">
+                            <button className="w-full bg-gray-800 text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4">
                                 Book a Seat
                             </button>
-                            <button className="w-full bg-white text-primary border-2 border-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all">
+                            <button className="w-full bg-white text-primary border-2 border-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-primary transition-all">
                                 Get Directions
                             </button>
                         </div>

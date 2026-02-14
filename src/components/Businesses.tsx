@@ -94,7 +94,7 @@ const Businesses = () => {
 
                 <div className="text-center">
                     <Link to="/businesses" className="inline-block bg-white text-primary font-bold py-3 px-10 rounded-full shadow-md hover:shadow-lg border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 font-poppins group">
-                        <span className="group-hover:text-white transition-colors">View All Businesses</span>
+                        <span className="group-hover:text-black transition-colors">View All Businesses</span>
                     </Link>
                 </div>
             </div>
