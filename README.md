@@ -2,7 +2,8 @@
 
 > **A real-time space-finder connecting students and organizations with available, underutilized local SMEs and community hubs to optimize urban efficiency and reduce travel waste.**
 
-![Spot](https://i.postimg.cc/vH912d74/spot-preview.png)
+   ```bash
+(https://www.figma.com/design/8Ui0p3oxWleZ5hWIdFIgxc/Spot?node-id=0-1&p=f&t=M5pzeWg7ZQ1wnT8a-0)
 
 ## 🚀 The Problem
 Students and organizations waste countless hours and energy searching for available spaces for studying, meetings, or events. Meanwhile, local Small and Medium Enterprises (SMEs) possess "hidden gem" spaces that often sit empty, resulting in lost revenue and inefficient use of urban infrastructure.
