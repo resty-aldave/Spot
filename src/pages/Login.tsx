@@ -57,11 +57,11 @@ const Login = () => {
 
                     {error && <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-4 text-sm text-center border border-red-200">{error}</div>}
 
-                    <div className="bg-blue-50 text-blue-800 p-3 rounded-lg mb-6 text-xs text-center border border-blue-200">
+                    {/* <div className="bg-blue-50 text-blue-800 p-3 rounded-lg mb-6 text-xs text-center border border-blue-200">
                         <strong>Demo Credentials:</strong><br />
                         Email: example.@gmail.com<br />
                         Password: 12345678
-                    </div>
+                    </div> */}
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
