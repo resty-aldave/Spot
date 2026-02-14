@@ -37,6 +37,7 @@ export interface SubBusiness {
     email?: string;
     password?: string;
     description?: string;
+    googleMapsLink?: string; // New field for directions
     pricing?: Pricing;
     spaces?: Space[];
     bookings?: Booking[];

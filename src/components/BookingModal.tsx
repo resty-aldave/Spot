@@ -108,8 +108,8 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-in-up flex flex-col max-h-[90vh]">
 
                 {/* Header */}
-                <div className="bg-primary p-6 flex justify-between items-center text-white shrink-0">
-                    <h2 className="text-xl font-bold font-poppins">Book a Spot</h2>
+                <div className="bg-[#0F172A] p-6 flex justify-between items-center text-white shrink-0">
+                    <h2 className="text-xl font-bold font-poppins leading-none">Book a Spot</h2>
                     <button onClick={onClose} className="hover:text-accent transition-colors bg-white/10 w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20">
                         <FontAwesomeIcon icon={faTimes} />
                     </button>

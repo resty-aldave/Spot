@@ -10,6 +10,7 @@ const Register = () => {
         name: '',
         location: '',
         description: '', // New field
+        googleMapsLink: '', // New field
         availabilityPercentage: 50, // Default
         email: '',
         password: '',
@@ -100,6 +101,17 @@ const Register = () => {
                             />
                         </div>
 
+                        {/* Google Maps Link Field */}
+                        <div>
+                            <label className="block text-gray-700 font-bold mb-2 font-inter">Google Maps Link</label>
+                            <input
+                                name="googleMapsLink"
+                                onChange={handleChange}
+                                placeholder="Paste Google Maps URL here..."
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent font-inter"
+                            />
+                        </div>
+
                         <div>
                             <label className="block text-gray-700 font-bold mb-2 font-inter">Email</label>
                             <input name="email" type="email" required onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent" />
@@ -130,6 +142,7 @@ const Register = () => {
                         <div className="space-y-3 font-inter text-gray-600 mb-8">
                             <p><strong>Name:</strong> {formData.name}</p>
                             <p><strong>Location:</strong> {formData.location}</p>
+                            <p><strong>GMaps Link:</strong> {formData.googleMapsLink || 'Not provided'}</p>
                             <p><strong>Email:</strong> {formData.email}</p>
                         </div>
                         <div className="flex space-x-4">
