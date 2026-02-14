@@ -82,7 +82,7 @@ const BusinessDetails = () => {
                         <div>
                             <h2 className="text-2xl font-bold text-primary mb-4 font-poppins">About this Spot</h2>
                             <p className="text-gray-600 text-lg leading-relaxed font-inter">
-                                {business.description || "Experience a productive atmosphere tailored for your needs. This spot offers high-speed internet, comfortable seating, and a community-focused environment perfect for studying, working, or collaborating."}
+                                {business.description?.trim() ? business.description : "Experience a productive atmosphere tailored for your needs. This spot offers high-speed internet, comfortable seating, and a community-focused environment perfect for studying, working, or collaborating."}
                             </p>
                         </div>
 

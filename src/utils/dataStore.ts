@@ -1,6 +1,6 @@
 import db from '../data/db.json';
 
-const STORAGE_KEY = 'spot_data_v1';
+const STORAGE_KEY = 'spot_data_v2';
 
 // Initial data type derived from db.json structure
 export interface SubBusiness {
