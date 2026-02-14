@@ -99,7 +99,7 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
 
                     <button
                         onClick={onClose}
-                        className="w-full bg-primary text-black font-bold py-4 rounded-xl hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-white"
+                        className="w-full bg-primary text-gray-700 font-bold py-4 rounded-xl hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:text-white"
                     >
                         Close
                     </button>

@@ -64,7 +64,7 @@ const UserRegister = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-slate-700 transition-colors shadow-lg text-lg ${loading ? 'opacity-70' : ''}`}
+                            className={`w-full bg-primary text-gray-700 font-bold py-4 rounded-lg hover:bg-slate-700 transition-colors shadow-lg text-lg hover:text-white ${loading ? 'opacity-70' : ''}`}
                         >
                             {loading ? 'Creating Account...' : 'Sign Up'}
                         </button>
