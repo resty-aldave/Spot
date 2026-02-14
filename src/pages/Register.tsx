@@ -11,7 +11,8 @@ const Register = () => {
         location: '',
         description: '', // New field
         googleMapsLink: '', // New field
-        availabilityPercentage: 50, // Default
+        availabilityPercentage: 0, // Default to 0 until spots are added
+
         email: '',
         password: '',
         image: 'https://placehold.co/600x400/0f172a/ffffff?text=New+Spot' // Default placeholder
