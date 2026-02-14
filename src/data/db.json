@@ -1,0 +1,48 @@
+{
+  "businesses": [
+    {
+      "id": 1,
+      "name": "Zero-Ten Park Cebu IT Park (formerly The Company)",
+      "location": "6th Floor, Mabuhay Tower, Abad St",
+      "availabilityPercentage": 85,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq1NsZqF_O5IT20I6fiV5oogvn_lm5vR-pO_OgHO2SLCFSSsr6OsDK8MNzPtOveOR_ytLmtRTPVtqVdhdWrkBPC3-7R9Pn5Ut1To6XfEwLnmdc3p3TUgwEXgO6L-g9u8j2znZPk=s1360-w1360-h1020"
+    },
+    {
+      "id": 2,
+      "name": "enspace Cebu",
+      "location": "11th Floor, Building JM del Mar Ave",
+      "availabilityPercentage": 40,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwereGvne8V8v_pm4yLbhldo7n6bqttPGuATYUI4sWylF207c2veaVdsuTR7EqXB43jzFc3Bs2BuifABlwD4onVMq-YeKDmkiaRHmWI7HLMD1VTmre64wzem50WsoHzbW0SEtHg=w355-h254-n-k-no-nu"
+    },
+    {
+      "id": 3,
+      "name": "Workplace Cafe",
+      "location": "OpenGround Floor, Ayala Central Bloc",
+      "availabilityPercentage": 92,
+      "image": "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/481976282_947147534239338_4483553986065149886_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGpox2SqGSlsYXKEJjeMKZi6a2gzT5TrQHpraDNPlOtAZDyGh3kCoHYV8-z0b6zw8c9uqmQ0ALUiaFsvrUqGMzq&_nc_ohc=bpunUGMp-qkQ7kNvwHuIZyQ&_nc_oc=AdkjX9aGlHTv2bMzr50hIaCe3l7UXtow2iA7mAdkEetDiOj7Ouixx0yWkEwPylMNg2U&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=A0H3VXgGdhLsLRY5wm1U-A&oh=00_AfvDdRqV6vAYgJKADtw6HsNsznPD1Wx9l4MMlWq6MlkUvQ&oe=69960A11"
+    },
+    {
+      "id": 4,
+      "name": "Sync Work + Study Hub",
+      "location": "OpenUnit 11, St. Patrick's Square, R Aboitiz St.",
+      "availabilityPercentage": 60,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweryDyfqyTTluZTkyjWaJ_6sjWYLVazwaWGCA6Te0us13oDcCZrpA2u5HP2ZQds3bUZP6RhwUokX0B_2x1QKnM7LVulf88k0e7w2ZZn9opQQj3onb4CYkiAhyWE3wQ2IdGS6tM9SdQ=w355-h593-n-k-no-nu"
+    },
+    {
+      "id": 5,
+      "name": "Third Wave Coffee Cebu - Bloq Cafe",
+      "location": "Open2nd Floor, inside Bloq Residences Showroom, GND Arcade, F. Cabahug St.",
+      "availabilityPercentage": 25,
+      "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoZC57RkYGYVRAJkLvLSGry8rE3_pMdRDlwp1y0gKtc5L5qkhUJ-Br_oKxOdWkWsmHgbyBjEd5ORVWeEFFaviKGQRiEmUYzaaJVKKzi71fYTX8BDlUz4R7kCLxjdyA_nm4xYVj6Fw=w244-h408-n-k-no-nu"
+    },
+    {
+      "id": "27f2",
+      "name": "Green Farm",
+      "location": "Cebu",
+      "availabilityPercentage": 50,
+      "email": "example.@gmail.com",
+      "password": "12345678",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxwuEC5YESlQV1xdTd43RFUD4xnozwGstltQ&s"
+    }
+  ]
+}

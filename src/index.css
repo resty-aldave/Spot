@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #0F172A;
+    background-color: #f8fafc;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animated Background Blobs */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    /* Changed from absolute to fixed */
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.4;
+    animation: blob-bounce 20s infinite ease-in-out;
+}
+
+body::before {
+    background: #eab308;
+    /* Accent yellow */
+    top: -200px;
+    left: -200px;
+}
+
+body::after {
+    background: #0f172a;
+    /* Primary blue/slate */
+    top: 50%;
+    right: -100px;
+    bottom: auto;
+    /* Reset bottom */
+    transform: translateY(-50%);
+    animation-delay: -10s;
+}
+
+@keyframes blob-bounce {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, 50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 20px) scale(0.9);
+    }
+}
