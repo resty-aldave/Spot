@@ -30,9 +30,11 @@ const Navbar = () => {
     };
 
     const handleLogout = () => {
-        logout();
-        navigate('/');
-        setIsOpen(false);
+        if (window.confirm("Are you sure you want to logout?")) {
+            logout();
+            navigate('/');
+            setIsOpen(false);
+        }
     }
 
     return (
