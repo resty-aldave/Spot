@@ -6,7 +6,27 @@
       "location": "6th Floor, Mabuhay Tower, Abad St",
       "availabilityPercentage": 85,
       "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweq1NsZqF_O5IT20I6fiV5oogvn_lm5vR-pO_OgHO2SLCFSSsr6OsDK8MNzPtOveOR_ytLmtRTPVtqVdhdWrkBPC3-7R9Pn5Ut1To6XfEwLnmdc3p3TUgwEXgO6L-g9u8j2znZPk=s1360-w1360-h1020",
-      "description": "Zero-Ten Park offers a vibrant and professional environment located in the heart of Cebu IT Park. Steps away from major tech hubs, it features high-speed internet, ergonomic seating, and collaborative meeting rooms designed for startups and freelancers."
+      "description": "Zero-Ten Park offers a vibrant and professional environment located in the heart of Cebu IT Park. Steps away from major tech hubs, it features high-speed internet, ergonomic seating, and collaborative meeting rooms designed for startups and freelancers.",
+      "googleMapsLink": "https://maps.google.com/?q=Zero-Ten+Park+Cebu+IT+Park",
+      "pricing": {
+        "perHead": 300,
+        "wholePlace": 15000
+      },
+      "spaces": [
+        {
+          "id": "t1",
+          "name": "Hot Desk A",
+          "currentOccupancy": 5,
+          "maxCapacity": 10
+        },
+        {
+          "id": "r1",
+          "name": "Meeting Room 1",
+          "currentOccupancy": 0,
+          "maxCapacity": 8
+        }
+      ],
+      "bookings": []
     },
     {
       "id": 2,
@@ -14,7 +34,27 @@
       "location": "11th Floor, Building JM del Mar Ave",
       "availabilityPercentage": 40,
       "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAwereGvne8V8v_pm4yLbhldo7n6bqttPGuATYUI4sWylF207c2veaVdsuTR7EqXB43jzFc3Bs2BuifABlwD4onVMq-YeKDmkiaRHmWI7HLMD1VTmre64wzem50WsoHzbW0SEtHg=w355-h254-n-k-no-nu",
-      "description": "enspace Cebu is more than just a workspace; it's a community for creators. With flexible hot desking options and private offices, we provide the perfect balance of privacy and networking opportunities. Enjoy our free flowing coffee and modern amenities."
+      "description": "enspace Cebu is more than just a workspace; it's a community for creators. With flexible hot desking options and private offices, we provide the perfect balance of privacy and networking opportunities. Enjoy our free flowing coffee and modern amenities.",
+      "googleMapsLink": "https://maps.google.com/?q=enspace+Cebu",
+      "pricing": {
+        "perHead": 250,
+        "wholePlace": 12000
+      },
+      "spaces": [
+        {
+          "id": "t1",
+          "name": "Open Coworking",
+          "currentOccupancy": 12,
+          "maxCapacity": 30
+        },
+        {
+          "id": "p1",
+          "name": "Private Office",
+          "currentOccupancy": 1,
+          "maxCapacity": 4
+        }
+      ],
+      "bookings": []
     },
     {
       "id": 3,
@@ -22,7 +62,27 @@
       "location": "OpenGround Floor, Ayala Central Bloc",
       "availabilityPercentage": 92,
       "image": "https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/481976282_947147534239338_4483553986065149886_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGpox2SqGSlsYXKEJjeMKZi6a2gzT5TrQHpraDNPlOtAZDyGh3kCoHYV8-z0b6zw8c9uqmQ0ALUiaFsvrUqGMzq&_nc_ohc=bpunUGMp-qkQ7kNvwHuIZyQ&_nc_oc=AdkjX9aGlHTv2bMzr50hIaCe3l7UXtow2iA7mAdkEetDiOj7Ouixx0yWkEwPylMNg2U&_nc_zt=23&_nc_ht=scontent.fmnl8-3.fna&_nc_gid=A0H3VXgGdhLsLRY5wm1U-A&oh=00_AfvDdRqV6vAYgJKADtw6HsNsznPD1Wx9l4MMlWq6MlkUvQ&oe=69960A11",
-      "description": "The Workplace Cafe is the pioneer of co-working cafes in Cebu. We offer a cozy, coffee-shop ambiance combined with productivity-focused amenities like power outlets at every table, fiber-optic internet, and nap rooms for when you need a break."
+      "description": "The Workplace Cafe is the pioneer of co-working cafes in Cebu. We offer a cozy, coffee-shop ambiance combined with productivity-focused amenities like power outlets at every table, fiber-optic internet, and nap rooms for when you need a break.",
+      "googleMapsLink": "https://maps.google.com/?q=Workplace+Cafe+Ayala+Central+Bloc",
+      "pricing": {
+        "perHead": 150,
+        "wholePlace": 8000
+      },
+      "spaces": [
+        {
+          "id": "main",
+          "name": "Main Hall",
+          "currentOccupancy": 45,
+          "maxCapacity": 50
+        },
+        {
+          "id": "n1",
+          "name": "Nap Room",
+          "currentOccupancy": 1,
+          "maxCapacity": 3
+        }
+      ],
+      "bookings": []
     },
     {
       "id": 4,
@@ -30,7 +90,27 @@
       "location": "OpenUnit 11, St. Patrick's Square, R Aboitiz St.",
       "availabilityPercentage": 60,
       "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweryDyfqyTTluZTkyjWaJ_6sjWYLVazwaWGCA6Te0us13oDcCZrpA2u5HP2ZQds3bUZP6RhwUokX0B_2x1QKnM7LVulf88k0e7w2ZZn9opQQj3onb4CYkiAhyWE3wQ2IdGS6tM9SdQ=w355-h593-n-k-no-nu",
-      "description": "Sync is designed for intense focus. Whether you are a student preparing for boards or a professional meeting a deadline, our quiet zones and study cubicles provide the distraction-free environment you need to succeed."
+      "description": "Sync is designed for intense focus. Whether you are a student preparing for boards or a professional meeting a deadline, our quiet zones and study cubicles provide the distraction-free environment you need to succeed.",
+      "googleMapsLink": "https://maps.google.com/?q=Sync+Work+Study+Hub+Cebu",
+      "pricing": {
+        "perHead": 180,
+        "wholePlace": 9000
+      },
+      "spaces": [
+        {
+          "id": "q1",
+          "name": "Quiet Zone",
+          "currentOccupancy": 8,
+          "maxCapacity": 15
+        },
+        {
+          "id": "c1",
+          "name": "Cubicle Area",
+          "currentOccupancy": 4,
+          "maxCapacity": 10
+        }
+      ],
+      "bookings": []
     },
     {
       "id": 5,
@@ -38,7 +118,21 @@
       "location": "Open2nd Floor, inside Bloq Residences Showroom, GND Arcade, F. Cabahug St.",
       "availabilityPercentage": 25,
       "image": "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoZC57RkYGYVRAJkLvLSGry8rE3_pMdRDlwp1y0gKtc5L5qkhUJ-Br_oKxOdWkWsmHgbyBjEd5ORVWeEFFaviKGQRiEmUYzaaJVKKzi71fYTX8BDlUz4R7kCLxjdyA_nm4xYVj6Fw=w244-h408-n-k-no-nu",
-      "description": "Experience the art of coffee while you work. Third Wave Coffee Cebu offers a relaxed, artistic atmosphere perfect for creative work. Enjoy our specialty brews and comfortable seating in a hidden gem location."
+      "description": "Experience the art of coffee while you work. Third Wave Coffee Cebu offers a relaxed, artistic atmosphere perfect for creative work. Enjoy our specialty brews and comfortable seating in a hidden gem location.",
+      "googleMapsLink": "https://maps.google.com/?q=Third+Wave+Coffee+Cebu",
+      "pricing": {
+        "perHead": 200,
+        "wholePlace": 10000
+      },
+      "spaces": [
+        {
+          "id": "cafe",
+          "name": "Cafe Seating",
+          "currentOccupancy": 5,
+          "maxCapacity": 20
+        }
+      ],
+      "bookings": []
     },
     {
       "id": "27f2",
@@ -48,7 +142,27 @@
       "email": "example.@gmail.com",
       "password": "12345678",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxwuEC5YESlQV1xdTd43RFUD4xnozwGstltQ&s",
-      "description": "Green Farm is an eco-conscious co-working space that brings nature indoors. Surrounded by plants and natural light, it is a refreshing alternative to traditional offices, promoting well-being and productivity."
+      "description": "Green Farm is an eco-conscious co-working space that brings nature indoors. Surrounded by plants and natural light, it is a refreshing alternative to traditional offices, promoting well-being and productivity.",
+      "googleMapsLink": "https://maps.google.com/?q=Green+Farm+Cebu",
+      "pricing": {
+        "perHead": 220,
+        "wholePlace": 11000
+      },
+      "spaces": [
+        {
+          "id": "g1",
+          "name": "Garden Desk",
+          "currentOccupancy": 5,
+          "maxCapacity": 10
+        },
+        {
+          "id": "i1",
+          "name": "Indoor Lounge",
+          "currentOccupancy": 5,
+          "maxCapacity": 10
+        }
+      ],
+      "bookings": []
     }
   ],
   "users": []
