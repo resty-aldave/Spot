@@ -336,7 +336,7 @@ const Dashboard = () => {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="px-6 py-2 bg-primary text-white rounded-lg font-bold hover:bg-slate-700 shadow-md"
+                                    className="px-6 py-2 bg-primary text-gray-700 rounded-lg font-bold hover:bg-slate-700 shadow-md"
                                 >
                                     Save Changes
                                 </button>

@@ -16,6 +16,7 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
     const [selectedSpaceId, setSelectedSpaceId] = useState<string>('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [peopleCount, setPeopleCount] = useState(1);
     const [estimatedFee, setEstimatedFee] = useState(0);
 
     // User Info (Pre-filled if logged in)
@@ -37,9 +38,10 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
         if (bookingType === 'wholePlace') {
             setEstimatedFee(business.pricing?.wholePlace || 10000);
         } else {
-            setEstimatedFee(business.pricing?.perHead || 200);
+            const basePrice = business.pricing?.perHead || 200;
+            setEstimatedFee(basePrice * peopleCount);
         }
-    }, [bookingType, business]);
+    }, [bookingType, business, peopleCount]);
 
     const handleBook = () => {
         if (!date || !time || !userName) {
@@ -52,6 +54,7 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
             contact,
             type: bookingType,
             spaceId: bookingType === 'individual' ? selectedSpaceId : undefined,
+            peopleCount: bookingType === 'individual' ? peopleCount : undefined,
             date,
             time,
             estimatedFee,
@@ -80,7 +83,9 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
                         </div>
                         <div className="flex justify-between border-b border-gray-200 pb-2">
                             <span className="text-gray-500 text-sm font-bold uppercase">Type</span>
-                            <span className="font-bold text-gray-800">{bookingType === 'individual' ? 'Individual / Group' : 'Whole Place Event'}</span>
+                            <span className="font-bold text-gray-800">
+                                {bookingType === 'individual' ? `Individual / Group (${peopleCount} pax)` : 'Whole Place Event'}
+                            </span>
                         </div>
                         <div className="flex justify-between border-b border-gray-200 pb-2">
                             <span className="text-gray-500 text-sm font-bold uppercase">When</span>
@@ -94,7 +99,7 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
 
                     <button
                         onClick={onClose}
-                        className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        className="w-full bg-primary text-black font-bold py-4 rounded-xl hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-white"
                     >
                         Close
                     </button>
@@ -160,7 +165,7 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
                         </div>
                     )}
 
-                    {/* Date & Time Grid */}
+                    {/* Date, Time & Number of People Grid */}
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="block text-gray-700 font-bold mb-2 font-inter text-sm">Date</label>
@@ -189,6 +194,21 @@ const BookingModal = ({ business, onClose }: BookingModalProps) => {
                             </div>
                         </div>
                     </div>
+
+                    {bookingType === 'individual' && (
+                        <div>
+                            <label className="block text-gray-700 font-bold mb-2 font-inter text-sm">Number of People</label>
+                            <input
+                                type="number"
+                                min="1"
+                                max="50"
+                                value={peopleCount}
+                                onChange={(e) => setPeopleCount(parseInt(e.target.value) || 1)}
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
+                            />
+                            <p className="text-xs text-gray-500 mt-1 italic">Total fee will adjust based on headcount.</p>
+                        </div>
+                    )}
 
                     {/* User Info */}
                     <div className="space-y-4">
