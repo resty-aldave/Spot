@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import db from '../data/db.json';
+import { getBusinesses } from '../utils/dataStore';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,26 +19,24 @@ const Login = () => {
         setLoading(true);
 
         try {
-            console.log("Attempting login with:", email);
+            // Simulate network delay for realism
+            await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 800));
-
-            const businesses = db.businesses;
+            const businesses = getBusinesses();
 
             // Find user match
-            const userMatch = businesses.find((b: any) =>
+            const userMatch = businesses.find((b) =>
                 b.email &&
                 b.email.toLowerCase() === email.toLowerCase().trim() &&
                 b.password === password
             );
 
             if (userMatch) {
-                console.log("Login successful for:", userMatch.name);
-                login(userMatch.email, userMatch.name);
+                // Fix: Ensure name is a string, provide fallback if undefined
+                const userName = userMatch.name || 'User';
+                login(userMatch.email || email, userName);
                 navigate('/dashboard');
             } else {
-                console.warn("Login failed: Invalid credentials");
                 setError('Invalid credentials. Please try again.');
             }
 

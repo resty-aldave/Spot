@@ -1,21 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import db from '../data/db.json'; // Importing data directly
-
-// Define Business interface
-interface Business {
-    id: string | number;
-    name: string;
-    location: string;
-    availabilityPercentage: number;
-    image: string;
-}
+import { getBusinesses, type SubBusiness } from '../utils/dataStore';
 
 const Businesses = () => {
-    // Use data from JSON file directly
-    // Ensure we handle the structure correctly (db.businesses)
-    const [businesses] = useState<Business[]>(db.businesses as Business[]);
+    // Use data from local helper to ensure we see updates
+    const [businesses, setBusinesses] = useState<SubBusiness[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        // Load from dataStore (which checks localStorage first)
+        setBusinesses(getBusinesses());
+    }, []);
 
     // Filter logic
     const filteredBusinesses = businesses.filter(business => {
@@ -78,7 +73,7 @@ const Businesses = () => {
                                         {/* Right Column: Availability % */}
                                         <div className="flex flex-col justify-end items-end pl-4 border-l border-gray-100 min-w-[30%]">
                                             <span className={`text-[2rem] font-bold font-inter leading-none ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                                    business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                                business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
                                                 }`}>
                                                 {business.availabilityPercentage}%
                                             </span>

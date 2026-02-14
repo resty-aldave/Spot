@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { registerNewBusiness } from '../utils/dataStore';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -27,15 +28,18 @@ const Register = () => {
 
     const confirmRegistration = async () => {
         try {
-            // Simulate POST to server
-            // In a real app: await fetch(...)
+            // Save to local storage via dataStore
+            registerNewBusiness({
+                id: Date.now(), // Temporary unique ID
+                ...formData
+            });
 
             // Redirect after brief delay
             setTimeout(() => {
                 setShowModal(false);
-                alert("Registration Successful! (Demo Mode: Data is not persisted to file, please use the provided 'Green Farm' login to test the dashboard)");
+                alert("Registration Successful! Please login with your new account.");
                 navigate('/login');
-            }, 1000);
+            }, 800);
 
         } catch (err) {
             console.error('Registration failed:', err);

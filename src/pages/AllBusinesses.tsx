@@ -2,23 +2,16 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import db from '../data/db.json';
-
-interface Business {
-    id: string | number;
-    name: string;
-    location: string;
-    availabilityPercentage: number;
-    image: string;
-}
+import { getBusinesses, type SubBusiness } from '../utils/dataStore';
 
 const AllBusinesses = () => {
-    // Load data directly
-    const [businesses] = useState<Business[]>(db.businesses as Business[]);
+    // Load data from store for live updates
+    const [businesses, setBusinesses] = useState<SubBusiness[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setBusinesses(getBusinesses());
     }, []);
 
     // Filter logic
@@ -89,7 +82,7 @@ const AllBusinesses = () => {
                                             {/* Right Column: Availability % */}
                                             <div className="flex flex-col justify-end items-end pl-4 border-l border-gray-100 min-w-[30%]">
                                                 <span className={`text-[2rem] font-bold font-inter leading-none ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                                        business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                                    business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
                                                     }`}>
                                                     {business.availabilityPercentage}%
                                                 </span>

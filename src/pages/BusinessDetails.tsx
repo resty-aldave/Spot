@@ -2,22 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import db from '../data/db.json';
+import { getBusinesses, type SubBusiness } from '../utils/dataStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock, faWifi, faCoffee, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-interface Business {
-    id: string | number;
-    name: string;
-    location: string;
-    availabilityPercentage: number;
-    image: string;
-    description?: string; // Optional if not in JSON yet
-}
-
 const BusinessDetails = () => {
     const { id } = useParams<{ id: string }>();
-    const [business, setBusiness] = useState<Business | null>(null);
+    const [business, setBusiness] = useState<SubBusiness | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -25,8 +16,9 @@ const BusinessDetails = () => {
         setLoading(true);
 
         if (id) {
-            // Find business by ID (handle string vs number comparison)
-            const foundBusiness = (db.businesses as Business[]).find(
+            // Find business by ID in stored data
+            const businesses = getBusinesses();
+            const foundBusiness = businesses.find(
                 (b) => b.id.toString() === id
             );
 
@@ -111,7 +103,7 @@ const BusinessDetails = () => {
                             <div className="text-center mb-6">
                                 <span className="block text-gray-500 text-sm mb-1 uppercase tracking-wide font-bold">Current Availability</span>
                                 <span className={`text-5xl font-bold font-inter ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                        business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                    business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
                                     }`}>
                                     {business.availabilityPercentage}%
                                 </span>

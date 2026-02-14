@@ -18,10 +18,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        // Check local storage for existing session
-        const storedUser = localStorage.getItem('spot_user');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        try {
+            // Check local storage for existing session
+            const storedUser = localStorage.getItem('spot_user');
+            if (storedUser) {
+                setUser(JSON.parse(storedUser));
+            }
+        } catch (error) {
+            console.error("Failed to parse user session", error);
+            localStorage.removeItem('spot_user');
         }
     }, []);
 
