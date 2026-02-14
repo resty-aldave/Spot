@@ -4,11 +4,12 @@ import type { ReactNode } from 'react';
 interface User {
     email: string;
     name?: string;
+    role: 'business' | 'user';
 }
 
 interface AuthContextType {
     user: User | null;
-    login: (email: string, name?: string) => void;
+    login: (email: string, role: 'business' | 'user', name?: string) => void;
     logout: () => void;
 }
 
@@ -30,8 +31,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }, []);
 
-    const login = (email: string, name?: string) => {
-        const newUser = { email, name };
+    const login = (email: string, role: 'business' | 'user', name?: string) => {
+        const newUser = { email, role, name };
         setUser(newUser);
         localStorage.setItem('spot_user', JSON.stringify(newUser));
     };

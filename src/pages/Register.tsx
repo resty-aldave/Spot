@@ -79,7 +79,7 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 font-bold mb-2 font-inter">Email (for Login)</label>
+                            <label className="block text-gray-700 font-bold mb-2 font-inter">Email</label>
                             <input name="email" type="email" required onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent" />
                         </div>
                         <div>
@@ -88,7 +88,7 @@ const Register = () => {
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 font-bold mb-2 font-inter">Image URL (Optional)</label>
+                            <label className="block text-gray-700 font-bold mb-2 font-inter">Image URL</label>
                             <input name="image" placeholder="https://..." onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent" />
                         </div>
 
