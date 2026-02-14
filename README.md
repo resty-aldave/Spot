@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# SPOT 📍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **A real-time space-finder connecting students and organizations with available, underutilized local SMEs and community hubs to optimize urban efficiency and reduce travel waste.**
 
-Currently, two official plugins are available:
+## 🚀 The Problem
+Students and organizations waste countless hours and energy searching for available spaces for studying, meetings, or events. Meanwhile, local Small and Medium Enterprises (SMEs) possess "hidden gem" spaces that often sit empty, resulting in lost revenue and inefficient use of urban infrastructure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💡 The Solution
+**SPOT** is a dual-sided digital marketplace. 
+* **For Users:** A real-time compass to check vacancy, noise levels, and easily book spaces—whether for a single student or a 50-person event.
+* **For SMEs:** A high-visibility advertising platform and live dashboard to manage space capacity, attract consistent foot traffic, and maximize their resources.
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👤 User Experience (Seekers)
+* **Real-Time Availability:** View live occupancy rates for local cafes, workspaces, and hubs.
+* **Smart Booking System:** Seamlessly book individual seats, group tables, or an entire venue.
+* **Dynamic Fee Estimation:** Automatically calculate costs based on headcounts or exclusive event pricing.
+* **Location & Amenities:** Filter spots by location, noise levels, and available amenities.
 
-## Expanding the ESLint configuration
+### 🏢 Business Dashboard (SMEs)
+* **Live Occupancy Tracking:** Instantly update space availability with a simple `[+]` / `[-]` interface.
+* **Space Management:** Add, edit, or remove specific tables, rooms, and seating areas.
+* **Analytics Preview:** Track monthly bookings and overall venue capacity in one clean dashboard.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Tech Stack
+* **Frontend:** React, Vite, TypeScript
+* **Styling:** Tailwind CSS ("Urban Minimalist" UI: Slate-900, Mustard Yellow, Pure White)
+* **Icons:** Font Awesome, Lucide React
+* **Backend/Data:** Local First via `json-server` (`db.json`) for rapid prototyping and real-time state demonstration.
+* **Routing:** React Router DOM
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🌱 SDG Alignment
+This project was built with a commitment to a sustainable future:
+* **SDG 11 (Sustainable Cities and Communities):** Optimizing existing urban infrastructure and reducing the carbon footprint of unnecessary travel.
+* **SDG 12 (Responsible Consumption and Production):** Helping local businesses maximize the utility of their physical spaces and resources.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 💻 Getting Started (Local Development)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To run this project locally for the hackathon demo:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/YourUsername/Spot.git](https://github.com/YourUsername/Spot.git)
+   cd Spot
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Install dependencies:**
+   ```bash
+    npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. **Start the Development Server:**
+   ```bash
+    npm run dev
+
+4. **Start the JSON Server (for database simulation):**
+Open a second terminal and run:
+   ```bash
+    npx json-server --watch src/data/db.json --port 3001
+
+## 🎨 Visual Identity
+Built with an "Urban Minimalist" design philosophy to ensure accessibility and professionalism.
+
+* **Primary Accent:** #EAB308 (Mustard Yellow)
+* **Text & Dark Elements:** #0F172A (Navy/Slate)
+* **Backgrounds:** #FFFFFF (Pure White)
+
+Built with passion and the Laban spirit for the 2026 Hackathon.
