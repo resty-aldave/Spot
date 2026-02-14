@@ -72,12 +72,12 @@ const Businesses = () => {
 
                                         {/* Right Column: Availability % */}
                                         <div className="flex flex-col justify-end items-end pl-4 border-l border-gray-100 min-w-[30%]">
-                                            <span className={`text-[2rem] font-bold font-inter leading-none ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                                business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                            <span className={`text-[2rem] font-bold font-inter leading-none ${business.availabilityPercentage < 30 ? 'text-green-600' :
+                                                business.availabilityPercentage < 70 ? 'text-yellow-600' : 'text-red-600'
                                                 }`}>
                                                 {business.availabilityPercentage}%
                                             </span>
-                                            <span className="text-[0.65rem] text-gray-400 uppercase tracking-wider font-bold mt-1">Avail</span>
+                                            <span className="text-[0.65rem] text-gray-400 uppercase tracking-wider font-bold mt-1">Full</span>
                                         </div>
                                     </div>
                                 </div>

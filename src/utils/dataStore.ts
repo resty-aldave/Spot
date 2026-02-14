@@ -70,6 +70,12 @@ export const getData = (): DataSchema => {
             users: (db as any).users as SubUser[] || []
         };
 
+        // Recalculate to ensure consistency on first load
+        initialData.businesses = initialData.businesses.map(b => ({
+            ...b,
+            availabilityPercentage: calculateAvailability(b.spaces || [])
+        }));
+
         localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
         return initialData;
     } catch (e) {
@@ -82,8 +88,22 @@ const saveData = (data: DataSchema) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
+const calculateAvailability = (spaces: Space[]): number => {
+    if (!spaces || spaces.length === 0) return 0;
+    const totalCapacity = spaces.reduce((acc, s) => acc + s.maxCapacity, 0);
+    const totalOccupancy = spaces.reduce((acc, s) => acc + s.currentOccupancy, 0);
+    return totalCapacity > 0
+        ? Math.round((totalOccupancy / totalCapacity) * 100)
+        : 0;
+};
+
 export const getBusinesses = (): SubBusiness[] => {
-    return getData().businesses;
+    const businesses = getData().businesses;
+    // Always recalculate to ensure UI consistency with current interpreted logic (occupancy rate)
+    return businesses.map(b => ({
+        ...b,
+        availabilityPercentage: calculateAvailability(b.spaces || [])
+    }));
 };
 
 export const getUsers = (): SubUser[] => {
@@ -108,6 +128,7 @@ export const registerNewBusiness = (newBusiness: SubBusiness): void => {
     const businessWithId = {
         ...newBusiness,
         id: newId,
+        availabilityPercentage: 0, // Ensure new businesses start at 0
         // Default structure for new businesses
         pricing: { perHead: 200, wholePlace: 10000 },
         spaces: [],
@@ -144,6 +165,7 @@ export const addSpace = (businessId: string | number, newSpace: Omit<Space, 'id'
         if (!business.spaces) business.spaces = [];
         const spaceId = Date.now().toString(36); // Simple unique ID
         business.spaces.push({ ...newSpace, id: spaceId });
+        business.availabilityPercentage = calculateAvailability(business.spaces);
         saveData(data);
     }
 };
@@ -159,11 +181,7 @@ export const updateSpaceOccupancy = (businessId: string | number, spaceId: strin
             space.currentOccupancy = newOccupancy;
 
             // Recalculate total availability
-            const totalCapacity = business.spaces.reduce((acc, s) => acc + s.maxCapacity, 0);
-            const totalOccupancy = business.spaces.reduce((acc, s) => acc + s.currentOccupancy, 0);
-            business.availabilityPercentage = totalCapacity > 0
-                ? Math.round(100 - ((totalOccupancy / totalCapacity) * 100))
-                : 0;
+            business.availabilityPercentage = calculateAvailability(business.spaces);
 
             saveData(data);
         }
@@ -176,6 +194,7 @@ export const deleteSpace = (businessId: string | number, spaceId: string): void 
 
     if (business && business.spaces) {
         business.spaces = business.spaces.filter(s => s.id !== spaceId);
+        business.availabilityPercentage = calculateAvailability(business.spaces);
         saveData(data);
     }
 };
