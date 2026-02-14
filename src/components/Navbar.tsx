@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import spotLogo from '../assets/spot.png';
 import { useAuth } from '../context/AuthContext';
@@ -60,7 +60,7 @@ const Navbar = () => {
 
                     {user ? (
                         <>
-                            <li><Link to="/dashboard" className="text-accent hover:text-white transition-colors font-bold flex items-center gap-2"><FontAwesomeIcon icon={faUser} /> Dashboard</Link></li>
+                            <li><Link to="/dashboard" className="hover:text-accent transition-colors">Dashboard</Link></li>
                             <li><button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm transition-colors shadow-md">Logout</button></li>
                         </>
                     ) : (

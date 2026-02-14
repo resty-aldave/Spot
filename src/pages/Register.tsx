@@ -2,12 +2,14 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { registerNewBusiness } from '../utils/dataStore';
 
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         location: '',
+        description: '', // New field
         availabilityPercentage: 50, // Default
         email: '',
         password: '',
@@ -15,7 +17,7 @@ const Register = () => {
     });
     const [showModal, setShowModal] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
@@ -27,18 +29,18 @@ const Register = () => {
 
     const confirmRegistration = async () => {
         try {
-            // POST to json-server
-            await fetch('http://localhost:3000/businesses', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+            // Save to local storage via dataStore
+            registerNewBusiness({
+                id: Date.now(), // Temporary unique ID
+                ...formData
             });
 
             // Redirect after brief delay
             setTimeout(() => {
                 setShowModal(false);
-                navigate('/'); // Go back to home
-            }, 1000);
+                alert("Registration Successful! Please login with your new account.");
+                navigate('/login');
+            }, 800);
 
         } catch (err) {
             console.error('Registration failed:', err);
@@ -62,6 +64,20 @@ const Register = () => {
                             <label className="block text-gray-700 font-bold mb-2 font-inter">Location</label>
                             <input name="location" required onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent" />
                         </div>
+
+                        {/* Added Description Field */}
+                        <div>
+                            <label className="block text-gray-700 font-bold mb-2 font-inter">Description</label>
+                            <textarea
+                                name="description"
+                                required
+                                rows={4}
+                                onChange={handleChange}
+                                placeholder="Describe your spot..."
+                                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent resize-none font-inter"
+                            />
+                        </div>
+
                         <div>
                             <label className="block text-gray-700 font-bold mb-2 font-inter">Email (for Login)</label>
                             <input name="email" type="email" required onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent" />

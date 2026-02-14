@@ -3,11 +3,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { getBusinesses, saveBusinessUpdate, type SubBusiness } from '../utils/dataStore';
 
 const Dashboard = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const [myBusiness, setMyBusiness] = useState<any>(null);
+    const [myBusiness, setMyBusiness] = useState<SubBusiness | null>(null);
     const [availability, setAvailability] = useState(50);
     const [isSaving, setIsSaving] = useState(false);
 
@@ -17,33 +18,33 @@ const Dashboard = () => {
             return;
         }
 
-        // Fetch user's business
-        fetch('http://localhost:3000/businesses')
-            .then(res => res.json())
-            .then(data => {
-                const match = data.find((b: any) => b.email === user.email);
-                if (match) {
-                    setMyBusiness(match);
-                    setAvailability(match.availabilityPercentage);
-                }
-            });
+        // Fetch user's business from local data store
+        const businesses = getBusinesses();
+        const match = businesses.find((b) => b.email === user.email);
+
+        if (match) {
+            setMyBusiness(match);
+            setAvailability(match.availabilityPercentage);
+        } else {
+            console.warn("User logged in but no business found");
+        }
     }, [user, navigate]);
 
     const handleUpdate = async () => {
         if (!myBusiness) return;
         setIsSaving(true);
 
-        try {
-            await fetch(`http://localhost:3000/businesses/${myBusiness.id}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ availabilityPercentage: availability })
-            });
-            setTimeout(() => setIsSaving(false), 500);
-        } catch (err) {
-            console.error(err);
+        // Update local object
+        const updatedBusiness = { ...myBusiness, availabilityPercentage: availability };
+        setMyBusiness(updatedBusiness);
+
+        // Save to data store effectively
+        saveBusinessUpdate(updatedBusiness);
+
+        setTimeout(() => {
             setIsSaving(false);
-        }
+            // alert("Update successful!"); // Optional: Feedback is in button text
+        }, 500);
     };
 
     if (!myBusiness) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>;
@@ -80,6 +81,9 @@ const Dashboard = () => {
                                 >
                                     {isSaving ? 'Updated!' : 'Update Availability'}
                                 </button>
+                                <p className="text-xs text-gray-400 mt-2 text-center">
+                                    Updates appear immediately on the "Find a Spot" page.
+                                </p>
                             </div>
                         </div>
                     </div>

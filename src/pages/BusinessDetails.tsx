@@ -2,22 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import db from '../data/db.json';
+import { getBusinesses, type SubBusiness } from '../utils/dataStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock, faWifi, faCoffee, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-interface Business {
-    id: string | number;
-    name: string;
-    location: string;
-    availabilityPercentage: number;
-    image: string;
-    description?: string; // Optional if not in JSON yet
-}
-
 const BusinessDetails = () => {
     const { id } = useParams<{ id: string }>();
-    const [business, setBusiness] = useState<Business | null>(null);
+    const [business, setBusiness] = useState<SubBusiness | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -25,8 +16,9 @@ const BusinessDetails = () => {
         setLoading(true);
 
         if (id) {
-            // Find business by ID (handle string vs number comparison)
-            const foundBusiness = (db.businesses as Business[]).find(
+            // Find business by ID in stored data
+            const businesses = getBusinesses();
+            const foundBusiness = businesses.find(
                 (b) => b.id.toString() === id
             );
 
@@ -90,7 +82,7 @@ const BusinessDetails = () => {
                         <div>
                             <h2 className="text-2xl font-bold text-primary mb-4 font-poppins">About this Spot</h2>
                             <p className="text-gray-600 text-lg leading-relaxed font-inter">
-                                {business.description || "Experience a productive atmosphere tailored for your needs. This spot offers high-speed internet, comfortable seating, and a community-focused environment perfect for studying, working, or collaborating."}
+                                {business.description?.trim() ? business.description : "Experience a productive atmosphere tailored for your needs. This spot offers high-speed internet, comfortable seating, and a community-focused environment perfect for studying, working, or collaborating."}
                             </p>
                         </div>
 
@@ -111,17 +103,17 @@ const BusinessDetails = () => {
                             <div className="text-center mb-6">
                                 <span className="block text-gray-500 text-sm mb-1 uppercase tracking-wide font-bold">Current Availability</span>
                                 <span className={`text-5xl font-bold font-inter ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                        business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                    business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
                                     }`}>
                                     {business.availabilityPercentage}%
                                 </span>
                                 <p className="text-sm text-gray-400 mt-2">Updated recently</p>
                             </div>
 
-                            <button className="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4">
+                            <button className="w-full bg-gray-800 text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4">
                                 Book a Seat
                             </button>
-                            <button className="w-full bg-white text-primary border-2 border-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all">
+                            <button className="w-full bg-white text-primary border-2 border-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-primary transition-all">
                                 Get Directions
                             </button>
                         </div>
