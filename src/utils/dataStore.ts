@@ -70,6 +70,12 @@ export const getData = (): DataSchema => {
             users: (db as any).users as SubUser[] || []
         };
 
+        // Recalculate to ensure consistency on first load
+        initialData.businesses = initialData.businesses.map(b => ({
+            ...b,
+            availabilityPercentage: calculateAvailability(b.spaces || [])
+        }));
+
         localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
         return initialData;
     } catch (e) {
@@ -87,12 +93,17 @@ const calculateAvailability = (spaces: Space[]): number => {
     const totalCapacity = spaces.reduce((acc, s) => acc + s.maxCapacity, 0);
     const totalOccupancy = spaces.reduce((acc, s) => acc + s.currentOccupancy, 0);
     return totalCapacity > 0
-        ? Math.round(100 - ((totalOccupancy / totalCapacity) * 100))
+        ? Math.round((totalOccupancy / totalCapacity) * 100)
         : 0;
 };
 
 export const getBusinesses = (): SubBusiness[] => {
-    return getData().businesses;
+    const businesses = getData().businesses;
+    // Always recalculate to ensure UI consistency with current interpreted logic (occupancy rate)
+    return businesses.map(b => ({
+        ...b,
+        availabilityPercentage: calculateAvailability(b.spaces || [])
+    }));
 };
 
 export const getUsers = (): SubUser[] => {

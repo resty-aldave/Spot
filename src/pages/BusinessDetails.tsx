@@ -90,9 +90,9 @@ const BusinessDetails = () => {
                         <div className="w-full md:w-1/3">
                             <div className="bg-white border-2 border-primary rounded-2xl p-6 shadow-lg">
                                 <div className="text-center">
-                                    <span className="block text-gray-600 text-sm mb-2 uppercase tracking-wide font-bold">Current Availability</span>
-                                    <span className={`text-6xl font-bold font-inter ${business.availabilityPercentage > 70 ? 'text-green-600' :
-                                        business.availabilityPercentage > 30 ? 'text-yellow-600' : 'text-red-600'
+                                    <span className="block text-gray-600 text-sm mb-2 uppercase tracking-wide font-bold">Current Occupancy</span>
+                                    <span className={`text-6xl font-bold font-inter ${business.availabilityPercentage < 30 ? 'text-green-600' :
+                                        business.availabilityPercentage < 70 ? 'text-yellow-600' : 'text-red-600'
                                         }`}>
                                         {business.availabilityPercentage}%
                                     </span>
