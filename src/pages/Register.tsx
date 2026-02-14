@@ -27,17 +27,14 @@ const Register = () => {
 
     const confirmRegistration = async () => {
         try {
-            // POST to json-server
-            await fetch('http://localhost:3000/businesses', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
+            // Simulate POST to server
+            // In a real app: await fetch(...)
 
             // Redirect after brief delay
             setTimeout(() => {
                 setShowModal(false);
-                navigate('/'); // Go back to home
+                alert("Registration Successful! (Demo Mode: Data is not persisted to file, please use the provided 'Green Farm' login to test the dashboard)");
+                navigate('/login');
             }, 1000);
 
         } catch (err) {

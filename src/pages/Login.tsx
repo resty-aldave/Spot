@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import db from '../data/db.json';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,14 +20,14 @@ const Login = () => {
 
         try {
             console.log("Attempting login with:", email);
-            const res = await fetch('http://localhost:3000/businesses');
-            if (!res.ok) throw new Error("Failed to fetch businesses");
 
-            const data = await res.json();
-            console.log("Fetched users:", data.length); // Security: Don't log full data in prod
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            const businesses = db.businesses;
 
             // Find user match
-            const userMatch = data.find((b: any) =>
+            const userMatch = businesses.find((b: any) =>
                 b.email &&
                 b.email.toLowerCase() === email.toLowerCase().trim() &&
                 b.password === password
@@ -43,7 +44,7 @@ const Login = () => {
 
         } catch (err) {
             console.error("Login error:", err);
-            setError('Something went wrong. Is the server running?');
+            setError('An unexpected error occurred.');
         } finally {
             setLoading(false);
         }
@@ -57,6 +58,12 @@ const Login = () => {
                     <h2 className="text-3xl font-bold font-poppins text-primary mb-6 text-center">Login to Dashboard</h2>
 
                     {error && <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-4 text-sm text-center border border-red-200">{error}</div>}
+
+                    <div className="bg-blue-50 text-blue-800 p-3 rounded-lg mb-6 text-xs text-center border border-blue-200">
+                        <strong>Demo Credentials:</strong><br />
+                        Email: example.@gmail.com<br />
+                        Password: 12345678
+                    </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import db from '../data/db.json';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -17,33 +18,29 @@ const Dashboard = () => {
             return;
         }
 
-        // Fetch user's business
-        fetch('http://localhost:3000/businesses')
-            .then(res => res.json())
-            .then(data => {
-                const match = data.find((b: any) => b.email === user.email);
-                if (match) {
-                    setMyBusiness(match);
-                    setAvailability(match.availabilityPercentage);
-                }
-            });
+        // Fetch user's business from local DB
+        const match = db.businesses.find((b: any) => b.email === user.email);
+        if (match) {
+            setMyBusiness(match);
+            setAvailability(match.availabilityPercentage);
+        } else {
+            // Fallback if not found in DB (e.g. registered in session but not in file)
+            // Ideally wouldn't happen if we only allow login via DB match
+            console.warn("User logged in but no business found");
+        }
     }, [user, navigate]);
 
     const handleUpdate = async () => {
         if (!myBusiness) return;
         setIsSaving(true);
 
-        try {
-            await fetch(`http://localhost:3000/businesses/${myBusiness.id}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ availabilityPercentage: availability })
-            });
-            setTimeout(() => setIsSaving(false), 500);
-        } catch (err) {
-            console.error(err);
+        // Simulate API call
+        // In a real app: await fetch(...)
+        // Here we just pretend to save since we can't write to the file from browser
+        setTimeout(() => {
             setIsSaving(false);
-        }
+            alert("Update successful! (Note: In this demo mode, changes are not persisted to the actual file)");
+        }, 1000);
     };
 
     if (!myBusiness) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">Loading...</div>;
@@ -78,8 +75,11 @@ const Dashboard = () => {
                                     className={`w-full py-3 rounded-lg font-bold transition-all shadow-md ${isSaving ? 'bg-green-500 text-white' : 'bg-primary text-white hover:bg-slate-700'
                                         }`}
                                 >
-                                    {isSaving ? 'Updated!' : 'Update Availability'}
+                                    {isSaving ? 'Updating...' : 'Update Availability'}
                                 </button>
+                                <p className="text-xs text-gray-400 mt-2 text-center italic">
+                                    * Demo Mode: Updates update the UI state but do not persist to file.
+                                </p>
                             </div>
                         </div>
                     </div>
