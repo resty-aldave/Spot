@@ -77,7 +77,7 @@ const Businesses = () => {
                                                 }`}>
                                                 {business.availabilityPercentage}%
                                             </span>
-                                            <span className="text-[0.65rem] text-gray-400 uppercase tracking-wider font-bold mt-1">Full</span>
+                                            <span className="text-[0.65rem] text-gray-400 uppercase tracking-wider font-bold mt-1">Filled</span>
                                         </div>
                                     </div>
                                 </div>
