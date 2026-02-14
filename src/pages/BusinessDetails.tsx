@@ -5,11 +5,13 @@ import Footer from '../components/Footer';
 import { getBusinesses, type SubBusiness } from '../utils/dataStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock, faWifi, faCoffee, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import BookingModal from '../components/BookingModal';
 
 const BusinessDetails = () => {
     const { id } = useParams<{ id: string }>();
     const [business, setBusiness] = useState<SubBusiness | null>(null);
     const [loading, setLoading] = useState(true);
+    const [showBookingModal, setShowBookingModal] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -86,6 +88,31 @@ const BusinessDetails = () => {
                             </p>
                         </div>
 
+                        {/* Available Spaces */}
+                        <div>
+                            <h3 className="text-xl font-bold text-primary mb-4 font-poppins">Available Spaces</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {business.spaces && business.spaces.length > 0 ? (
+                                    business.spaces.map(space => (
+                                        <div key={space.id} className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex justify-between items-center">
+                                            <div>
+                                                <h4 className="font-bold text-gray-800 font-inter">{space.name}</h4>
+                                                <p className="text-xs text-gray-500">{space.maxCapacity} seats max</p>
+                                            </div>
+                                            <div className="text-right">
+                                                <span className={`font-bold ${space.currentOccupancy >= space.maxCapacity ? 'text-red-500' : 'text-green-600'}`}>
+                                                    {space.maxCapacity - space.currentOccupancy} left
+                                                </span>
+                                                <p className="text-xs text-gray-400">of {space.maxCapacity}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-gray-500 italic">No specific spaces listed.</p>
+                                )}
+                            </div>
+                        </div>
+
                         {/* Amenities (Placeholder for now) */}
                         <div>
                             <h3 className="text-xl font-bold text-primary mb-4 font-poppins">Amenities</h3>
@@ -110,7 +137,10 @@ const BusinessDetails = () => {
                                 <p className="text-sm text-gray-400 mt-2">Updated recently</p>
                             </div>
 
-                            <button className="w-full bg-gray-800 text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4">
+                            <button
+                                onClick={() => setShowBookingModal(true)}
+                                className="w-full bg-gray-800 text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all shadow-lg transform hover:-translate-y-1 mb-4"
+                            >
                                 Book a Seat
                             </button>
                             <button className="w-full bg-white text-primary border-2 border-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-primary transition-all">
@@ -123,6 +153,9 @@ const BusinessDetails = () => {
             </main>
 
             <Footer />
+            {showBookingModal && business && (
+                <BookingModal business={business} onClose={() => setShowBookingModal(false)} />
+            )}
         </div>
     );
 };
