@@ -28,7 +28,7 @@ const AllBusinesses = () => {
 
             <section className="bg-primary pt-32 pb-16 px-6">
                 <div className="container mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold font-poppins text-white mb-6">All <span className="text-accent">Spots</span></h1>
+                    <h1 className="text-4xl md:text-5xl font-bold font-poppins text-gray-700 mb-6">All <span className="text-gray-700">Spots</span></h1>
                     <p className="text-gray-700 font-inter text-lg max-w-2xl mx-auto mb-8">
                         Browse our complete network of study hubs, coworking spaces, and cafes. Find the perfect environment for your productivity.
                     </p>
